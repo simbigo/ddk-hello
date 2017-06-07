@@ -1,0 +1,21 @@
+{
+    "packages": [
+        "mysql-5.7",
+        {
+            "name": "php7.1-fpm",
+            "depends_on": [
+                "mysql-5.7"
+            ]
+        },
+        {
+            "name": "nginx",
+            "depends_on": [
+                "php7.1-fpm"
+            ]
+        }
+    ],
+    "on-init": [
+        "cp ${PROJECT_PATH}/ddk-conf/nginx.conf ${PACKAGES_PATH}/nginx/storage/etc/nginx/conf.d/hello.ddk.conf",
+        "echo Hello!"
+    ]
+}
